@@ -11,13 +11,26 @@ const playlists=require("./router/playlists")
 const cors = require("cors");
 
 require("dotenv").config();
+const cors = require("cors");
+
+// Define allowed origins
+const allowedOrigins = ["https://sptofy-frontend-cd9a.vercel.app"];
+
 app.use(
   cors({
-    origin: "https://sptofy-frontend-cd9a.vercel.app", // Allow your frontend domain
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
-    credentials: true, // Allow cookies if needed
+    origin: function (origin, callback) {
+      // Check if the origin is in the allowedOrigins array
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true, // Allow cookies and credentials
   })
 );
+app.options("*", cors()); // Enable preflight requests for all routes
+
 app.use(express.json());
 app.use(passport.initialize());
 mongoose
