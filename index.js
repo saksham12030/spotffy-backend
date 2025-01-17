@@ -11,7 +11,6 @@ const playlists=require("./router/playlists")
 const cors = require("cors");
 
 require("dotenv").config();
-const cors = require("cors");
 
 // Define allowed origins
 const allowedOrigins = ["https://sptofy-frontend-cd9a.vercel.app"];
