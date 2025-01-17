@@ -13,7 +13,7 @@ const cors = require("cors");
 require("dotenv").config();
 app.use(
   cors({
-    origin: "https://spotffy-backend.vercel.app", // Allow your frontend domain
+    origin: "https://sptofy-frontend-cd9a.vercel.app", // Allow your frontend domain
     methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
     credentials: true, // Allow cookies if needed
   })
