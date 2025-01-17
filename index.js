@@ -11,7 +11,13 @@ const playlists=require("./router/playlists")
 const cors = require("cors");
 
 require("dotenv").config();
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3001"], // Replace with your frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allowed methods
+    credentials: true, // If using cookies or HTTP authentication
+  })
+);
 app.use(express.json());
 app.use(passport.initialize());
 mongoose
